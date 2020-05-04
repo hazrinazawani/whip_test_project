@@ -8,7 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
  // imports: [TypeOrmModule.forFeature([User])],
  @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Product', schema: userSchema }]),
+    MongooseModule.forFeature([{ name: 'User', schema: userSchema }]),
   ],
   controllers: [userController],
   providers: [userService],

@@ -20,9 +20,9 @@ export class userService
 
 
  @Injectable()
-export class ProductsService {
+export class userService {
   constructor(
-    @InjectModel('User') private readonly userModel: Model<User>,
+    @InjectModel('User') private readonly userModel
   ) {}
     async insertUser(id: string, name: string, password: string, plate_number:number) {
         const newUser = new this.userModel({
