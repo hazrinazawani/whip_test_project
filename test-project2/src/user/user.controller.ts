@@ -39,7 +39,30 @@ import {
     {
 
         return this.userService.getSingleUser(id);
+    
+    }
 
+
+
+    @Patch('id:')
+    updateUser(
+        @Param('id')id:String,
+        @Body('username')username:String,
+        @Body('password')password:String,
+        @Body('plate_number')plate_number:String,
+    ){
+        
+    }
+    
 
     
-  }}
+
+
+
+
+
+
+
+}
+
+  

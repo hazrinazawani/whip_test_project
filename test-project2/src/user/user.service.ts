@@ -25,12 +25,27 @@ export class userService {
     if(!user){
 
       throw new NotFoundException ('could  not find user');
-    }
+  }
 
     return{...user };
+  
+  }
 
+  private findUser(id:String){
 
+    const user = this.user.find(user=>user.id===id);
+    if(!user){
 
+      throw new NotFoundException('could not find user');
+    }
+
+    return user;
+
+  }
+
+  updateUser(userID:String,username:String,password:String,plate_number:String){
+
+    const user=this.findUser(userID);
   }
 
 
