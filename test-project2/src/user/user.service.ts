@@ -1,27 +1,21 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+
 import { User } from './user.model';
 
 @Injectable()
-export class UserService {
-
-    //a list of user in an array, import from user.model 
+export class userService {
 
     user: User[]=[];
 
-    insertUser(username:String,password:String,vehicle:String,plate_number:String){
+  insertUser(username: string, password: string, plate_number: number) {
+    const userID = Math.random().toString();
+    const newUser = new User(userID, username, password, plate_number);
+    this.user.push(newUser);
+    return userID;
+  }
 
-        const user_ID = new Date().toString();
-        const newUser = new User(user_ID,username,password,vehicle,plate_number);
-        this.user.push(newUser);
-        return user_ID;
+  getUser() {
+    return [...this.user];
+  }
 
-        //push user into the array
-
-
-    }
-
-    getUser(){
-
-        return[...this.user]
-    }
 }

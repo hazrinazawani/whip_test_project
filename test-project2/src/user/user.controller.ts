@@ -7,40 +7,30 @@ import {
     Patch,
     Delete,
   } from '@nestjs/common';
-  import { UserService } from './user.service';
-
-@Controller('user')
-export class UserController { 
-
-    constructor(private readonly userService:UserService){ } //instance of userservice of type userservice 
-
+  
+  import { userService } from './user.service';
+  
+  @Controller('User')
+  export class userController {
+    constructor(private readonly userService: userService) {}
+  
     @Post()
-    addUser(
-        @Body('username') USER_username:String,
-        @Body('password') USER_password:String,
-        @Body('vehicle') USER_vehicle:String,
-        @Body('plate_number') USER_plate_number:String,
-
-    ):any{
-
-       const generated =  this.userService.insertUser(USER_username,USER_password,USER_vehicle,USER_plate_number); //get data from incoming post request
-
-
+    addProduct(
+      @Body('username') u_username: string,
+      @Body('password') u_password: string,
+      @Body('plate_number') u_plate_number: number,
+    ) {
+      const generatedId = this.userService.insertUser(
+        u_username,
+        u_password,
+        u_plate_number
+      );
+      return { id: generatedId };
     }
-
+  
     @Get()
-    getAllUser(){
-
-        return this.userService.getUser();
+    getUser() {
+      return this.userService.getUser();
     }
-
-   
-
-
-    }
-
-    
-
-
-
-}
+  
+  }

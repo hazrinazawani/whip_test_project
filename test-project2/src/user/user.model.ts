@@ -1,13 +1,9 @@
-export class User{
-
-    //adding properties to user
+export class User {
     constructor(
-
-    id:String,
-    username:String,
-    password:String,
-    vehicle:String,
-    plate_number:String
-    ){}
-
-}
+      public id: string,
+      public username: string,
+      public password: string,
+      public plate_number: number,
+    ) {}
+  }
+  
