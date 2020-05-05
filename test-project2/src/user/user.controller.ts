@@ -25,12 +25,21 @@ import {
         u_password,
         u_plate_number
       );
-      return { id: generatedId };
+      return { id: generatedId };   //returns an Id
     }
   
     @Get()
-    getUser() {
-      return this.userService.getUser();
+    getAllUser() {
+      return this.userService.getAllUser(); //return a list of products by id
     }
-  
-  }
+
+    @Get('id:')
+    getUser(@Param('id')id:String)
+    
+    {
+
+        return this.userService.getSingleUser(id);
+
+
+    
+  }}

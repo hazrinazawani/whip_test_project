@@ -14,8 +14,26 @@ export class userService {
     return userID;
   }
 
-  getUser() {
+  getAllUser() {
     return [...this.user];
   }
 
+  getSingleUser(id:String){
+
+    const user = this.user.find((user)=>user.id===id);
+
+    if(!user){
+
+      throw new NotFoundException ('could  not find user');
+    }
+
+    return{...user };
+
+
+
+  }
+
+
+
 }
+
