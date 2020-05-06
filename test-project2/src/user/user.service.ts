@@ -1,11 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import{ InjectModel } from '@nestjs/mongoose';
 
 import { User } from './user.model';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class userService {
 
-    user: User[]=[];
+  private user: User[]=[];
+
+  constructor(@InjectModel('User')private userModel:Model<User>){ }
 
   insertUser(username: string, password: string, plate_number: number) {
     const userID = Math.random().toString();

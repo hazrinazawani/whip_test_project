@@ -7,12 +7,12 @@ export const userSchema = new mongoose.Schema({
 });
 
 
-export class User {
+export interface User {
     constructor(
-      public id: string,
-      public username: string,
-      public password: string,
-      public plate_number: number,
-    ) {}
+      id: string,
+      username: string,
+      password: string,
+      plate_number: number,
+    ) 
   }
   
