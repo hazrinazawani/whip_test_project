@@ -21,6 +21,7 @@ export class userService {
    
   const result = await newUser.save(); 
   console.log(result);
+  return result.userID;
   }
 
   getAllUser() {
