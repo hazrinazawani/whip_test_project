@@ -3,6 +3,7 @@ import{ InjectModel } from '@nestjs/mongoose';
 
 import { User } from './user.model';
 import { Model } from 'mongoose';
+import { userModule } from './user.module';
 
 @Injectable()
 export class userService {
@@ -11,11 +12,15 @@ export class userService {
 
   constructor(@InjectModel('User')private userModel:Model<User>){ }
 
-  insertUser(username: string, password: string, plate_number: number) {
+ async insertUser(username: string, password: string, plate_number: number) {
     const userID = Math.random().toString();
-    const newUser = new this.userModel(userID, username, password, plate_number);
-    this.user.push(newUser);
-    return userID;
+    const newUser = new this.userModel({
+      username:String,
+      password:String,
+      plate_number:Number});
+   
+  const result = await newUser.save(); 
+  console.log(result);
   }
 
   getAllUser() {
