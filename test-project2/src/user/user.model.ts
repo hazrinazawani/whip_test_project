@@ -8,6 +8,7 @@ export const userSchema = new mongoose.Schema({
 
 
 export interface User {
+    save();
     constructor(
       id: string,
       username: string,

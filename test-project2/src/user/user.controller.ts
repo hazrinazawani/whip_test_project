@@ -28,16 +28,17 @@ import {
       return { id: generatedId };   //returns an Id
     }
   
+    
     @Get()
-    getAllUser() {
-      return this.userService.getAllUser(); //return a list of products by id
+    async getAllUsers() {
+        const user = await this.userService.getUser();
+        return user;
     }
 
     @Get('id:')
     getUser(@Param('id')id:String)
     
     {
-
         return this.userService.getSingleUser(id);
     
     }
@@ -50,11 +51,14 @@ import {
         @Body('username')username:String,
         @Body('password')password:String,
         @Body('plate_number')plate_number:String,
-    ){
-        
-    }
+    ){}
     
 
+@Delete(':id')
+  async removeUser(@Param('id') userid: string) {
+      await this.userService.deleteUser(userid);
+      return null;
+  }
     
 
 
